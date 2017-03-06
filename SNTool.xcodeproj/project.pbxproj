@@ -16,6 +16,7 @@
 		B3A2E4711E5EBA83005459E9 /* SNToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E4701E5EBA83005459E9 /* SNToolTests.m */; };
 		B3A2E47C1E5EBA83005459E9 /* SNToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E47B1E5EBA83005459E9 /* SNToolUITests.m */; };
 		B3A2E48C1E5EBAB8005459E9 /* SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E48B1E5EBAB8005459E9 /* SNTool.m */; };
+		B3D121E01E6D0452005D443B /* sn_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D121DF1E6D0452005D443B /* sn_ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		B3A2E47D1E5EBA83005459E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3A2E48A1E5EBAB8005459E9 /* SNTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTool.h; sourceTree = "<group>"; };
 		B3A2E48B1E5EBAB8005459E9 /* SNTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTool.m; sourceTree = "<group>"; };
+		B3D121DE1E6D0452005D443B /* sn_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sn_ViewController.h; sourceTree = "<group>"; };
+		B3D121DF1E6D0452005D443B /* sn_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sn_ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 			children = (
 				B3A2E48A1E5EBAB8005459E9 /* SNTool.h */,
 				B3A2E48B1E5EBAB8005459E9 /* SNTool.m */,
+				B3D121DE1E6D0452005D443B /* sn_ViewController.h */,
+				B3D121DF1E6D0452005D443B /* sn_ViewController.m */,
 			);
 			path = SNTool;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				B3A2E45B1E5EBA83005459E9 /* AppDelegate.m in Sources */,
 				B3A2E48C1E5EBAB8005459E9 /* SNTool.m in Sources */,
 				B3A2E4581E5EBA83005459E9 /* main.m in Sources */,
+				B3D121E01E6D0452005D443B /* sn_ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +529,7 @@
 				B3A2E4821E5EBA83005459E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3A2E4831E5EBA83005459E9 /* Build configuration list for PBXNativeTarget "SNToolTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +538,7 @@
 				B3A2E4851E5EBA83005459E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3A2E4861E5EBA83005459E9 /* Build configuration list for PBXNativeTarget "SNToolUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +547,7 @@
 				B3A2E4881E5EBA83005459E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
