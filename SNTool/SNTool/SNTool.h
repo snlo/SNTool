@@ -151,13 +151,14 @@
 + (void)addMaskToView:(UIView *__nonnull)view withRoundedRect:(CGRect)roundedRect cornerRadius:(CGFloat)cornerRadius;
 
 /**
- *  实现模糊效果（兼容到iOS_7，在iOS8以前用的是UIToolbar，在iOS8以后用的是UIVisualEffectView。当然这两者的效果也是有所不同）
- *  不建议让其参加CaorAnimation动画
- *  @param view  被模糊对象
- *  @param color 模糊颜色,设置它的alpha值从0~1模糊度由低变高
- *  @param alpha 模糊透明度，值为0时，不存在模糊度。
+ 兼容ios7的毛玻璃效果, 适应autolayout
+ 
+ @param view 目标视图
+ @param style  UIBlurEffectStyleExtraLight,   UIBarStyleDefault          = 0,
+               UIBlurEffectStyleLight,        UIBarStyleBlack            = 1,
+               UIBlurEffectStyleDark,         UIBarStyleBlackTranslucent = 2,
  */
-+ (void)addVisualEffectViewAtView:(UIView * __nonnull)view withColor:(UIColor * __nullable)color alpha:(CGFloat)alpha;
++ (void)groundGlassView:(UIView *__nonnull)view style:(NSInteger)style;
 
 /**
  *  线性插值

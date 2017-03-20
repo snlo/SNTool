@@ -323,26 +323,39 @@
 }
 
 
-+ (void)addVisualEffectViewAtView:(UIView *)view withColor:(UIColor *)color alpha:(CGFloat)alpha
++ (void)groundGlassView:(UIView *)view style:(NSInteger)style
 {
-    if ((iOS8_0)) {
-        
-        UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    if (!(iOS8_0)) {
+        UIBlurEffect *effect = [UIBlurEffect effectWithStyle:style];
         UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-        visualEffectView.frame = view.bounds;
-        visualEffectView.backgroundColor = color;
-        visualEffectView.alpha = alpha;
-        visualEffectView.userInteractionEnabled = YES;
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = NO;
         [view addSubview:visualEffectView];
         
+        NSDictionary * views = NSDictionaryOfVariableBindings(visualEffectView);
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[visualEffectView]|"
+                                                                     options:NSLayoutFormatAlignAllLeft
+                                                                     metrics:nil
+                                                                       views:views]];
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[visualEffectView]|"
+                                                                     options:NSLayoutFormatAlignAllLeft
+                                                                     metrics:nil
+                                                                       views:views]];
     } else {
-        
         UIToolbar * toolbar = [[UIToolbar alloc] init];
-        toolbar.frame = view.bounds;
-        toolbar.barStyle = UIBarStyleDefault;
+        toolbar.translatesAutoresizingMaskIntoConstraints = NO;
+        toolbar.barStyle = style;
         [view addSubview:toolbar];
+        
+        NSDictionary * views = NSDictionaryOfVariableBindings(toolbar);
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolbar]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[toolbar]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
     }
-    
 }
 
 + (CGFloat)interpolateFrom:(CGFloat)from to:(CGFloat)to percent:(CGFloat)percent {
