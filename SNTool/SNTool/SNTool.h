@@ -1,203 +1,241 @@
 //
 //  SNTool.h
-//  SNTool
+//  AiteCube
 //
-//  Created by sunDong on 2017/2/21.
-//  Copyright © 2017年 snlo. All rights reserved.
+//  Created by sunDong on 2017/9/25.
+//  Copyright © 2017年 AiteCube. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define iOS8_0 [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0
-
-#define iOS7_0 7.0 <= [[[UIDevice currentDevice] systemVersion] doubleValue] <= 8.0
-
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+__attribute__((objc_subclassing_restricted))
 
 @interface SNTool : NSObject
 
-/** @return 任意对象的上一个响应者ViewContrllor实咧 */
-+ (UIViewController *__nonnull)getNextViewController;
-
-/** 获取指定视图的第一响应者
- *
- *  @param VC 目标视图控制器
- *  @return 目标视图中的第一响应者 */
-+ (id __nullable)firstResponderFromViewControllor:(UIViewController *__nonnull)VC;
++ (instancetype)sharedManager;
 
 /**
- *  获取当前窗口的第一响应者
- *
- *  通过接入apple的非公开API，为了避免可能被拒使用SEL的方式让apple忽视。当中还使用到忽视某个警告的方法（查阅自：http://www.jianshu.com/p/eb03e20f7b1c，右键Reveal in Log）*/
-+ (UIView * __nullable)firstResponderFromKeyWindow;
-
-/**
- *  找出导航栏下方的极细分割线
- *
- *  @param view navigationBar */
-+ (UIImageView *__nullable)findHairlineImageViewFrom:(UIView *__nonnull)view;
-
-/**
- *  随机数
- *
- *  @param from 包含的最小整数
- *  @param to   包含的最大整数
- *
- *  @return 随机整数
+ 获取根视图控制器
  */
-+ (int)getRandomNumber:(int)from to:(int)to;
++ (UIViewController *)rootViewController;
 
 /**
- *  获取但前时间，默认格式：@"yyyy-MM-dd HH:mm:ss"
- *
- *  @param format 当为nil，时间的格式为默认
- *
- *  @return 当前时间
+ 统一定制alertViewController,兼容到iOS 8。
+
+ @param style 见 UIAlertControllerStyle
+ @param title 标题
+ @param message 内容
+ @param block action回调，‘0’为UIAlertActionStyleCancel的action。
+ @param cancelString action数组，与回到中的actionIndex一一对应。当为nil时，alertViewController在2s后自动销毁
  */
-+ (NSString *__nonnull)getCurrentTimeFormat:(NSString *__nullable)format fromDate:(NSDate *__nullable)date;
-/**
- *  获取距离当前时间，默认格式：@"yyyy-MM-dd HH:mm:ss"
- *
- *  @param secs   时间间隔，秒，after就传正数，before就传负数 eg:在此之前3天 -24 * 60 * 60 * 3
- *  @param format 当为nil，时间的格式为默认
- *
- *  @return 距离当前时间secs秒
- */
-+ (NSString *__nonnull)getTimeFromCurrentSecs:(NSTimeInterval)secs format:(NSString *__nullable)format;
-+ (void)handleTimeDate:(NSDate *__nonnull)date complete:(void(^ _Nonnull)(NSUInteger year, NSUInteger month, NSUInteger day, NSUInteger weekDay, NSUInteger hour, NSUInteger minute, NSUInteger second))completeBlock;
-/**
- *  设备版本
- *
- *  @return e.g. iPhone 5S
- */
-+ (NSString *__nullable)deviceVersion;
++ (void)showAlertStyle:(UIAlertControllerStyle)style title:(NSString *)title msg:(NSString *)message chooseBlock:(void (^)(NSInteger actionIndx))block  actionsStatement:(NSString *)cancelString, ... NS_REQUIRES_NIL_TERMINATION;
 
 /**
- *  获取中文首字母
- *  判断string是否为中文
- *  判断string是否为空或全是空格
- *  判断字符串中是否含有某个字符串
+ HUD 提示框，默认显示3秒
  */
-+ (NSString *__nonnull)firstCharactor:(NSString *__nonnull)aString;
-+ (BOOL)isChinese:(NSString *__nonnull)aString;
-+ (BOOL)isBlankString:(NSString *__nonnull)string;
-+ (BOOL)isHaveString:(NSString *__nonnull)string InString:(NSString *__nonnull)inString;
++ (void)showHUDalertMsg:(NSString *)msg completion:(void(^)(void))completion;
 
 /**
- *  获取string的长度
- *
- *  @param aWidth string
- *  @param font  string的字体大小
- *
- *  @return string的长度 CGFloat
+ HUD 成功的提示，默认3秒显示
  */
-+ (CGFloat)widthFromString:(NSString * __nonnull)aString withRangeWidth:(CGFloat)aWidth font:(UIFont * __nonnull)font;
-+ (CGFloat)heightFromString:(NSString *__nonnull)aString withRangeWidth:(CGFloat)aWidth font:(UIFont *__nonnull)font;
++ (void)showHUDsuccessMsg:(NSString *)msg completion:(void(^)(void))completion;
 
 /**
- *  NSString的简单富文本 动态属性编辑
- *
- *  @param fixedText          string
- *  @param highlightTextArray 要插入的string
- *  @param locationArray      插入位置 用string表示
- *  @param font               要插入的字体
- *  @param highColoer         highColoer description
- *  @param warningColor       warningColor description
- *  @param index              warningColor所在位置（第几个出入字段）
- *
- *  @return AttributedString类似于突出显示的警示文本
+ HUD 全局菊花
+ @param msg 等待提示
  */
-+ (NSMutableAttributedString *__nonnull)attributedStringWithFixedText:(NSString *__nonnull)fixedText
-                                                   highlightTextArray:(NSArray <NSString *>*__nonnull)highlightTextArray
-                                                        locationArray:(NSArray <NSString *>*__nonnull)locationArray
-                                                        lightTextFont:(UIFont *__nonnull)font
-                                                           highColoer:(UIColor *__nonnull)highColoer
-                                                         warningColor:(UIColor *__nullable)warningColor
-                                                               atInde:(NSInteger)index;
-/**
- *  改变某些文字的颜色 并单独设置其字体
- *
- *  @param font        设置的字体
- *  @param color       颜色
- *  @param totalString 总的字符串
- *  @param subArray    想要变色的字符数组
- *
- *  @return 生成的富文本
- */
-+ (NSMutableAttributedString *__nonnull)attributedChangeFont:(UIFont *__nonnull)font
-                                                       Color:(UIColor *__nonnull)color
-                                                 TotalString:(NSString *__nonnull)totalString
-                                              SubStringArray:(NSArray *__nonnull)subArray;
++ (void)showLoading:(NSString *)msg;
 
 /**
- *  剪切图片
- *
- *  @param image  剪切对象
- *  @param toSize 目标尺寸
- *
- *  @return 目标图片
+ 销毁 全局菊花
  */
-+ (UIImage *__nonnull)image:(UIImage *__nonnull)image ToSize:(CGSize)toSize;
++ (void)dismisLoding;
 
 /**
- *  透明遮照,透视到父控制器上去，通俗的说是在view上抠了个孔
- *
- *  @param view         添加对象
- *  @param roundedRect  遮照矩形
- *  @param cornerRadius 矩形圆角
+ 判断一个视图控制器是否是模态推送出来的
  */
-+ (void)addMaskToView:(UIView *__nonnull)view withRoundedRect:(CGRect)roundedRect cornerRadius:(CGFloat)cornerRadius;
++ (BOOL)isPresented:(UIViewController *)viewController;
 
 /**
- 兼容ios7的毛玻璃效果, 适应autolayout
+ 读取颜色的透明度
+ */
++ (CGFloat)alphaColor:(UIColor *)color;
+
+/**
+ 颜色转图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+
+/**
+ 颜色转换
  
- @param view 目标视图
- @param style  UIBlurEffectStyleExtraLight,   UIBarStyleDefault          = 0,
-               UIBlurEffectStyleLight,        UIBarStyleBlack            = 1,
-               UIBlurEffectStyleDark,         UIBarStyleBlackTranslucent = 2,
+ @param color iOS中十六进制的颜色（以#开头）
+ @return UIColor
  */
-+ (void)groundGlassView:(UIView *__nonnull)view style:(NSInteger)style;
++ (UIColor *)colorWithHexString:(NSString *)color;
 
 /**
- *  线性插值
- *
- *  @param from    起始值
- *  @param to      结束值
- *  @param percent 另一个变量当前变化值占总可变值的百分比
- *
- *  @return 插值结果
+ 正则表达式检索手机号
  */
-+ (CGFloat)interpolateFrom:(CGFloat)from to:(CGFloat)to percent:(CGFloat)percent;
++ (BOOL)isPhone:(NSString *)phone;
+
+/**
+ 正则身份证有效性
+ */
++ (BOOL)isIDCardNumber:(NSString *)value;
+
+/**
+ 正则密码是否6位以上包含数字和字母
+ */
++ (BOOL)isPassWord:(NSString *)pass;
+
+/**
+ 正则是否为6位数的交易密码
+ */
++ (BOOL)isPaymentNumber:(NSString *)number;
+
+/**
+ 正则匹配image的url
+ */
++ (NSString *)isImageUrl:(NSString *)string;
+
+/**
+ 切除聊天文件域名地址
+ */
++ (NSString *)cutHTTPStringFromChatFilePath:(NSString *)filePath;
+/**
+ 判断iOS 11以便UI适配
+ */
++ (BOOL)isiOS11;
+
+/**
+ 任意对象的上一个响应者ViewContrllor实咧
+ */
++ (UIViewController *)getNextViewController;
++ (UIViewController *)topViewController;
+/**
+ 拨打电话
+
+ @param number 电话号码
+ */
++ (void)callWithTelephone:(NSString *)number;
+
+/**
+ string 的长度，在不同的显示范围类
+ */
++ (CGFloat)widthFromString:(NSString *)aString withRangeWidth:(CGFloat)aWidth font:(UIFont *)font;
+
+/**
+ string 的高度，在不同的显示范围类
+ */
++ (CGFloat)heightFromString:(NSString *)aString withRangeWidth:(CGFloat)aWidth font:(UIFont *)font;
+
+/**
+ 实现模糊效果（兼容到iOS_7，在iOS8以前用的是UIToolbar，在iOS8以后用的是UIVisualEffectView。当然这两者的效果也是有所不同） 不建议让其参加CaorAnimation动画
+
+ @param view 被模糊对象
+ @param color 模糊颜色,设置它的alpha值从0~1模糊度由低变高
+ @param alpha 模糊透明度，值为0时，不存在模糊度。
+ */
++ (void)addVisualEffectViewAtView:(UIView *)view withColor:(UIColor *)color alpha:(CGFloat)alpha;
+
+/**
+ 改变某些文字的颜色 并单独设置其字体
+
+ @param font 设置的字体
+ @param color 颜色
+ @param totalString 总的字符串
+ @param subArray 想要变色的字符数组
+ @return 生成的富文本
+ */
++ (NSMutableAttributedString *)attributedChangeFont:(UIFont *)font color:(UIColor *)color totalString:(NSString *)totalString subStringArray:(NSArray *)subArray;
+
+/**
+ 限制表情符号
+ */
++ (BOOL)stringContainsEmoji:(NSString *)string;
+
+/**
+ 获取但前时间，
+
+ @param format 默认格式：@"yyyy-MM-dd HH:mm:ss" 当为nil，时间的格式为默认
+ @param date 自定义时间
+ @return 当前时间
+ */
++ (NSString *)getCurrentTimeFormat:(NSString *)format fromDate:(NSDate *)date;
+
+/**
+ 获取距离当前时间
+
+ @param secs  时间间隔，秒，after就传正数，before就传负数 eg:在此之前3天 -24 * 60 * 60 * 3
+ @param format 默认格式：@"yyyy-MM-dd HH:mm:ss" 当为nil，时间的格式为默认
+ @return 距离当前时间secs秒
+ */
++ (NSString *)getTimeFromCurrentSecs:(NSTimeInterval)secs format:(NSString *)format;
+
+/**
+ 获取当前星期几
+
+ @param date 自定义时间
+ */
++ (NSString *)getCurrentWeekFromDate:(NSDate *)date;
+
+/**
+ 根据正则，过滤特殊字符
+
+ @param string 要过滤的字符串
+ @param regexStr 正则
+ @return 过滤后的字符串
+ */
++ (NSString *)filterCharacters:(NSString *)string withRegex:(NSString *)regexStr;
+
+/**
+ 获取本地版本号
+ */
++ (NSString *)getAppVersionNo;
+
+/**
+ 是否全为空格
+ */
++ (BOOL)isAllEmpty:(NSString *)string;
+
+/**
+ 调度辅助函数，会包含一些特殊处理
+ 
+ @param module 本地组件名
+ @param url 远程调度链接，参考‘SNMediator’
+ @param action 事件名 signal:信号名
+ @param params 附带参数
+ @param shouldCacheTarget 是否缓存本地组件名
+ @return 可能是'UIViewController'或者是‘RACSignal’等等
+ */
++ (id)mediatModule:(NSString *)module url:(NSURL *)url acrion:(NSString *)action params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
++ (id)mediatModule:(NSString *)module url:(NSURL *)url signal:(NSString *)signal params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
 
 
 /**
- *  手机号码验证
- *  @param mobileNumber 需要验证的手机号
- *
- *  @return 查证百度百科的手机号段
+ 'homeBar' 高度
  */
-+ (BOOL)isMobileNumber:(NSString *__nonnull)mobileNumber;
-
-//2016.10.14
++ (CGFloat)homeBarHeight;
 /**
- *  中文排序（可混合英文和数字string）（优先数字、英文）
- *  @param aArray      排序前的数组
- *  @param isAscending YES为升序，NO为降序
- *
- *  @return 排序后的数组
+ 标签栏高度
  */
-+ (NSArray *__nonnull)sortChineseWithArray:(NSArray *__nonnull)aArray isAscending:(BOOL)isAscending;
++ (CGFloat)tabbarHeight;
 
 /**
- *  纯英文字母排序
- *
- *  @param aArray      排序前的数组
- *  @param isAscending YES为升序，NO为降序
- *
- *  @return 排序后的数组
+ 导航栏高度
  */
-+ (NSArray *__nonnull)sortLetterWithArray:(NSArray *__nonnull)aArray isAscending:(BOOL)isAscending;
++ (CGFloat)navigationBarHeight;
+
+/**
+ 状态栏高度
+ */
++ (CGFloat)statusBarHeight;
+
+/**
+ 导航栏 + 状态栏高度
+ */
++ (CGFloat)naviBarAndStatusBarHeight;
 
 @end

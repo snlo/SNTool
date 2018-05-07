@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5EB0047820A11C70003E8AF8 /* SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB0047620A11C70003E8AF8 /* SNTool.m */; };
 		B3A2E4581E5EBA83005459E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E4571E5EBA83005459E9 /* main.m */; };
 		B3A2E45B1E5EBA83005459E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E45A1E5EBA83005459E9 /* AppDelegate.m */; };
 		B3A2E45E1E5EBA83005459E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E45D1E5EBA83005459E9 /* ViewController.m */; };
@@ -15,8 +16,6 @@
 		B3A2E4661E5EBA83005459E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A2E4641E5EBA83005459E9 /* LaunchScreen.storyboard */; };
 		B3A2E4711E5EBA83005459E9 /* SNToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E4701E5EBA83005459E9 /* SNToolTests.m */; };
 		B3A2E47C1E5EBA83005459E9 /* SNToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E47B1E5EBA83005459E9 /* SNToolUITests.m */; };
-		B3A2E48C1E5EBAB8005459E9 /* SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E48B1E5EBAB8005459E9 /* SNTool.m */; };
-		B3D121E01E6D0452005D443B /* sn_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D121DF1E6D0452005D443B /* sn_ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5EB0047620A11C70003E8AF8 /* SNTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTool.m; sourceTree = "<group>"; };
+		5EB0047720A11C70003E8AF8 /* SNTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTool.h; sourceTree = "<group>"; };
 		B3A2E4531E5EBA83005459E9 /* SNTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A2E4571E5EBA83005459E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B3A2E4591E5EBA83005459E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,10 +54,6 @@
 		B3A2E4771E5EBA83005459E9 /* SNToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A2E47B1E5EBA83005459E9 /* SNToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNToolUITests.m; sourceTree = "<group>"; };
 		B3A2E47D1E5EBA83005459E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3A2E48A1E5EBAB8005459E9 /* SNTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTool.h; sourceTree = "<group>"; };
-		B3A2E48B1E5EBAB8005459E9 /* SNTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTool.m; sourceTree = "<group>"; };
-		B3D121DE1E6D0452005D443B /* sn_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sn_ViewController.h; sourceTree = "<group>"; };
-		B3D121DF1E6D0452005D443B /* sn_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sn_ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,10 +147,8 @@
 		B3A2E4891E5EBAB8005459E9 /* SNTool */ = {
 			isa = PBXGroup;
 			children = (
-				B3A2E48A1E5EBAB8005459E9 /* SNTool.h */,
-				B3A2E48B1E5EBAB8005459E9 /* SNTool.m */,
-				B3D121DE1E6D0452005D443B /* sn_ViewController.h */,
-				B3D121DF1E6D0452005D443B /* sn_ViewController.m */,
+				5EB0047720A11C70003E8AF8 /* SNTool.h */,
+				5EB0047620A11C70003E8AF8 /* SNTool.m */,
 			);
 			path = SNTool;
 			sourceTree = "<group>";
@@ -293,9 +288,8 @@
 			files = (
 				B3A2E45E1E5EBA83005459E9 /* ViewController.m in Sources */,
 				B3A2E45B1E5EBA83005459E9 /* AppDelegate.m in Sources */,
-				B3A2E48C1E5EBAB8005459E9 /* SNTool.m in Sources */,
+				5EB0047820A11C70003E8AF8 /* SNTool.m in Sources */,
 				B3A2E4581E5EBA83005459E9 /* main.m in Sources */,
-				B3D121E01E6D0452005D443B /* sn_ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
