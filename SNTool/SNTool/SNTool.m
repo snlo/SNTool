@@ -10,6 +10,8 @@
 
 #import <objc/runtime.h>
 
+#import <MBProgressHUD.h>
+
 @interface SNTool ()
 
 @property (nonatomic, strong) MBProgressHUD * hud;
@@ -397,7 +399,10 @@ static id instanse;
     if ([pred evaluateWithObject:string]) {
         return string;
     } else {
-        return SNString(@"%@/%@",[SNNetworking sharedManager].basrUrl, string);
+        Class temp = NSClassFromString(@"SNNetworking");
+        NSString * tempString = (__bridge NSString *)(class_getProperty([temp sharedManager], "basrUrl"));
+        
+        return SNString(@"%@/%@",tempString, string);
     }
 }
 + (NSString *)cutHTTPStringFromChatFilePath:(NSString *)filePath {
@@ -663,62 +668,6 @@ static id instanse;
     }
 }
 
-+ (id)mediatModule:(NSString *)module url:(NSURL *)url acrion:(NSString *)action params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget {
-    
-    id response = nil;
-    
-    if (url) {
-        response = [SNMediator module:nil url:url action:nil params:nil shouldCacheTarget:nil];
-    } else {
-        response = [SNMediator module:module url:nil action:action params:params shouldCacheTarget:shouldCacheTarget];
-    }
-    
-    
-    if ([response isKindOfClass:[UIViewController class]]) {
-        return response;
-    } else {
-        
-        __block UIViewController * errorViewController = [UIViewController new];
-        errorViewController.view.backgroundColor = [UIColor redColor];
-        [[SNTool topViewController] presentViewController:errorViewController animated:YES completion:^{
-            [SNTool showAlertStyle:UIAlertControllerStyleAlert title:@"公告" msg:@"意外惊喜，中间件未收到视图控制器，点击返回" chooseBlock:^(NSInteger actionIndx) {
-                [errorViewController dismissViewControllerAnimated:YES completion:^{
-                    
-                }];
-            } actionsStatement:@"返回", nil];
-        }];
-        
-        return errorViewController;
-    }
-    
-    return nil;
-}
-
-+ (id)mediatModule:(NSString *)module url:(NSURL *)url signal:(NSString *)signal params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget {
-    
-    id response = nil;
-    
-    if (url) {
-        response = [SNMediator module:nil url:url action:nil params:nil shouldCacheTarget:nil];
-    } else {
-        response = [SNMediator module:module url:nil action:signal params:params shouldCacheTarget:shouldCacheTarget];
-    }
-    
-    if ([response isKindOfClass:[RACCommand class]]) {
-        return response;
-    } else if ([response isKindOfClass:[RACSignal class]]) {
-        return response;
-    } else if ([response isKindOfClass:[RACSubject class]]) {
-        return response;
-    } else {
-        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-            [subscriber sendNext:@"null about ！！"];
-            [subscriber sendCompleted];
-            return nil;
-        }];
-    }
-}
-
 + (CGFloat)homeBarHeight {
     if ([SNTool topViewController].tabBarController.tabBar) {
         return [SNTool topViewController].tabBarController.tabBar.frame.size.height - 49.f;
@@ -737,10 +686,23 @@ static id instanse;
 }
 
 + (CGFloat)navigationBarHeight {
-    if ([SNTool topViewController].sn_navigationController.navigationBar) {
-        return [SNTool topViewController].sn_navigationController.navigationBar.frame.size.height;
+    if ([SNTool fetchNavigationController].navigationBar) {
+        return [SNTool fetchNavigationController].navigationBar.frame.size.height;
     } else {
         return kStatusBarAndNavigationBarHeight - [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+}
+
++ (UINavigationController *)fetchNavigationController {
+    UIViewController * temp = [SNTool topViewController];
+    if (temp.navigationController) {
+        return temp.navigationController;
+    } else if (temp.tabBarController) {
+        return temp.tabBarController.navigationController;
+    } else if ([temp isKindOfClass:[UINavigationController class]]) {
+        return (UINavigationController *)temp;
+    } else {
+        return nil;
     }
 }
 
@@ -749,8 +711,8 @@ static id instanse;
 }
 
 + (CGFloat)naviBarAndStatusBarHeight {
-    if ([SNTool topViewController].sn_navigationController.navigationBar) {
-        CGFloat height = [SNTool topViewController].sn_navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    if ([SNTool fetchNavigationController].navigationBar) {
+        CGFloat height = [SNTool fetchNavigationController].navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
         return height;
     } else {
         return kStatusBarAndNavigationBarHeight;

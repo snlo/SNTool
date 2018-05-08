@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37922E8994AD820FB1C27A47 /* libPods-SNToolTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55830EA6C024BD5BB40366E5 /* libPods-SNToolTests.a */; };
+		576392C362E9813830BC4FEA /* libPods-SNToolUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7B336037C8959E1BCCB8C3 /* libPods-SNToolUITests.a */; };
 		5EB0047820A11C70003E8AF8 /* SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB0047620A11C70003E8AF8 /* SNTool.m */; };
+		B2154FBBFD7CEBEA33BAB27B /* libPods-SNTool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E600F2AF6617AAA788107DE /* libPods-SNTool.a */; };
 		B3A2E4581E5EBA83005459E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E4571E5EBA83005459E9 /* main.m */; };
 		B3A2E45B1E5EBA83005459E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E45A1E5EBA83005459E9 /* AppDelegate.m */; };
 		B3A2E45E1E5EBA83005459E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E45D1E5EBA83005459E9 /* ViewController.m */; };
@@ -36,8 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0807A5C86D7A49C030805C0D /* Pods-SNToolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNToolUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNToolUITests/Pods-SNToolUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0C7B336037C8959E1BCCB8C3 /* libPods-SNToolUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNToolUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55830EA6C024BD5BB40366E5 /* libPods-SNToolTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNToolTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E600F2AF6617AAA788107DE /* libPods-SNTool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNTool.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB0047620A11C70003E8AF8 /* SNTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTool.m; sourceTree = "<group>"; };
 		5EB0047720A11C70003E8AF8 /* SNTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTool.h; sourceTree = "<group>"; };
+		68B6482510D1643BBEC3FC6C /* Pods-SNToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNToolTests/Pods-SNToolTests.release.xcconfig"; sourceTree = "<group>"; };
+		9832B56D20A13ADE00BDC97C /* SNTololMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTololMacro.h; sourceTree = "<group>"; };
+		9832B56E20A13B5E00BDC97C /* Singletion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singletion.h; sourceTree = "<group>"; };
 		B3A2E4531E5EBA83005459E9 /* SNTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A2E4571E5EBA83005459E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B3A2E4591E5EBA83005459E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +64,10 @@
 		B3A2E4771E5EBA83005459E9 /* SNToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A2E47B1E5EBA83005459E9 /* SNToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNToolUITests.m; sourceTree = "<group>"; };
 		B3A2E47D1E5EBA83005459E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAC898FD0231EC2D6EB4FD54 /* Pods-SNTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNTool/Pods-SNTool.debug.xcconfig"; sourceTree = "<group>"; };
+		F4FEE702DDF7A3957CFA410B /* Pods-SNToolTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNToolTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNToolTests/Pods-SNToolTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA82819FAB1C73C9E3C759BA /* Pods-SNToolUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNToolUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNToolUITests/Pods-SNToolUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FE9C147FE2D75C2511F1F398 /* Pods-SNTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNTool/Pods-SNTool.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2154FBBFD7CEBEA33BAB27B /* libPods-SNTool.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37922E8994AD820FB1C27A47 /* libPods-SNToolTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +91,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576392C362E9813830BC4FEA /* libPods-SNToolUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		097FE6C8BCCAEBB40B1525E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAC898FD0231EC2D6EB4FD54 /* Pods-SNTool.debug.xcconfig */,
+				FE9C147FE2D75C2511F1F398 /* Pods-SNTool.release.xcconfig */,
+				F4FEE702DDF7A3957CFA410B /* Pods-SNToolTests.debug.xcconfig */,
+				68B6482510D1643BBEC3FC6C /* Pods-SNToolTests.release.xcconfig */,
+				0807A5C86D7A49C030805C0D /* Pods-SNToolUITests.debug.xcconfig */,
+				FA82819FAB1C73C9E3C759BA /* Pods-SNToolUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		350F82B7F21A485258B1DDED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E600F2AF6617AAA788107DE /* libPods-SNTool.a */,
+				55830EA6C024BD5BB40366E5 /* libPods-SNToolTests.a */,
+				0C7B336037C8959E1BCCB8C3 /* libPods-SNToolUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B3A2E44A1E5EBA83005459E9 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +128,8 @@
 				B3A2E46F1E5EBA83005459E9 /* SNToolTests */,
 				B3A2E47A1E5EBA83005459E9 /* SNToolUITests */,
 				B3A2E4541E5EBA83005459E9 /* Products */,
+				097FE6C8BCCAEBB40B1525E4 /* Pods */,
+				350F82B7F21A485258B1DDED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +191,8 @@
 			children = (
 				5EB0047720A11C70003E8AF8 /* SNTool.h */,
 				5EB0047620A11C70003E8AF8 /* SNTool.m */,
+				9832B56D20A13ADE00BDC97C /* SNTololMacro.h */,
+				9832B56E20A13B5E00BDC97C /* Singletion.h */,
 			);
 			path = SNTool;
 			sourceTree = "<group>";
@@ -160,6 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3A2E4801E5EBA83005459E9 /* Build configuration list for PBXNativeTarget "SNTool" */;
 			buildPhases = (
+				4491AA7F5869B6679AA74B5D /* [CP] Check Pods Manifest.lock */,
 				B3A2E44F1E5EBA83005459E9 /* Sources */,
 				B3A2E4501E5EBA83005459E9 /* Frameworks */,
 				B3A2E4511E5EBA83005459E9 /* Resources */,
@@ -177,6 +222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3A2E4831E5EBA83005459E9 /* Build configuration list for PBXNativeTarget "SNToolTests" */;
 			buildPhases = (
+				F52BE78823B0477A4DF47B2C /* [CP] Check Pods Manifest.lock */,
 				B3A2E4681E5EBA83005459E9 /* Sources */,
 				B3A2E4691E5EBA83005459E9 /* Frameworks */,
 				B3A2E46A1E5EBA83005459E9 /* Resources */,
@@ -195,6 +241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3A2E4861E5EBA83005459E9 /* Build configuration list for PBXNativeTarget "SNToolUITests" */;
 			buildPhases = (
+				377E14663D7AE40CE0BFD5A8 /* [CP] Check Pods Manifest.lock */,
 				B3A2E4731E5EBA83005459E9 /* Sources */,
 				B3A2E4741E5EBA83005459E9 /* Frameworks */,
 				B3A2E4751E5EBA83005459E9 /* Resources */,
@@ -215,7 +262,7 @@
 		B3A2E44B1E5EBA83005459E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = snlo;
 				TargetAttributes = {
 					B3A2E4521E5EBA83005459E9 = {
@@ -280,6 +327,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		377E14663D7AE40CE0BFD5A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNToolUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4491AA7F5869B6679AA74B5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNTool-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F52BE78823B0477A4DF47B2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNToolTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B3A2E44F1E5EBA83005459E9 /* Sources */ = {
@@ -353,15 +457,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -401,15 +513,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -436,6 +556,7 @@
 		};
 		B3A2E4811E5EBA83005459E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAC898FD0231EC2D6EB4FD54 /* Pods-SNTool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SNTool/Info.plist;
@@ -448,6 +569,7 @@
 		};
 		B3A2E4821E5EBA83005459E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE9C147FE2D75C2511F1F398 /* Pods-SNTool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SNTool/Info.plist;
@@ -460,6 +582,7 @@
 		};
 		B3A2E4841E5EBA83005459E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4FEE702DDF7A3957CFA410B /* Pods-SNToolTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SNToolTests/Info.plist;
@@ -472,6 +595,7 @@
 		};
 		B3A2E4851E5EBA83005459E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68B6482510D1643BBEC3FC6C /* Pods-SNToolTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SNToolTests/Info.plist;
@@ -484,6 +608,7 @@
 		};
 		B3A2E4871E5EBA83005459E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0807A5C86D7A49C030805C0D /* Pods-SNToolUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SNToolUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -495,6 +620,7 @@
 		};
 		B3A2E4881E5EBA83005459E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA82819FAB1C73C9E3C759BA /* Pods-SNToolUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SNToolUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

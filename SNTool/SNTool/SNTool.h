@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "SNTololMacro.h"
+#import "Singletion.h"
+
 __attribute__((objc_subclassing_restricted))
 
 @interface SNTool : NSObject
@@ -199,20 +202,6 @@ __attribute__((objc_subclassing_restricted))
  是否全为空格
  */
 + (BOOL)isAllEmpty:(NSString *)string;
-
-/**
- 调度辅助函数，会包含一些特殊处理
- 
- @param module 本地组件名
- @param url 远程调度链接，参考‘SNMediator’
- @param action 事件名 signal:信号名
- @param params 附带参数
- @param shouldCacheTarget 是否缓存本地组件名
- @return 可能是'UIViewController'或者是‘RACSignal’等等
- */
-+ (id)mediatModule:(NSString *)module url:(NSURL *)url acrion:(NSString *)action params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
-+ (id)mediatModule:(NSString *)module url:(NSURL *)url signal:(NSString *)signal params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
-
 
 /**
  'homeBar' 高度
