@@ -399,9 +399,13 @@ static id instanse;
     if ([pred evaluateWithObject:string]) {
         return string;
     } else {
-        Class temp = NSClassFromString(@"SNNetworking");
-        NSString * tempString = (__bridge NSString *)(class_getProperty([temp sharedManager], "basrUrl"));
+        NSObject * temp = [NSClassFromString(@"snlo") sharedManager];
+        NSString * tempString = @"";
         
+        Ivar ivar = class_getInstanceVariable([temp class], "_basrUrl");
+        if (ivar != NULL) {
+            tempString = object_getIvar(temp, ivar);
+        }
         return SNString(@"%@/%@",tempString, string);
     }
 }
