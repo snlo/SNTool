@@ -75,6 +75,7 @@ _Pragma("clang diagnostic pop") \
  string about
  */
 #define SNString( s, ... ) [NSString stringWithFormat:(s), ##__VA_ARGS__]
+#define SNString_localized( s ) [NSString sn_localizedStringForKey:(s) table:nil bundle:nil]
 
 
 #endif /* SNTololMacro_h */

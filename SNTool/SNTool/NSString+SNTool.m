@@ -26,25 +26,21 @@
         bundle = @"SNTool";
     }
     
-    static NSBundle * bundles = nil;
-    
-    if (bundle == nil) {
-        NSString *language = [NSLocale preferredLanguages].firstObject;
-        if ([language hasPrefix:@"en"]) {
-            language = @"en";
-        } else if ([language hasPrefix:@"zh"]) {
-            if ([language rangeOfString:@"Hans"].location != NSNotFound) {
-                language = @"zh-Hans";
-            } else {
-                language = @"zh-Hant";
-            }
+    NSString *language = [NSLocale preferredLanguages].firstObject;
+    if ([language hasPrefix:@"en"]) {
+        language = @"en";
+    } else if ([language hasPrefix:@"zh"]) {
+        if ([language rangeOfString:@"Hans"].location != NSNotFound) {
+            language = @"zh-Hans";
         } else {
-            language = @"en";
+            language = @"zh-Hant";
         }
-        
-        NSBundle * bundleKit = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:bundle ofType:@"bundle"]];
-        bundles = [NSBundle bundleWithPath:[bundleKit pathForResource:language ofType:@"lproj"]];
+    } else {
+        language = @"en";
     }
+    
+    NSBundle * bundleKit = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:bundle ofType:@"bundle"]];
+    NSBundle * bundles = [NSBundle bundleWithPath:[bundleKit pathForResource:language ofType:@"lproj"]];
     
     NSString * value = [bundles localizedStringForKey:key value:nil table:table];
     
