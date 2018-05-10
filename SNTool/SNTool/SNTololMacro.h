@@ -52,26 +52,29 @@ vc.automaticallyAdjustsScrollViewInsets = NO;\
 _Pragma("clang diagnostic pop") \
 } while (0)
 
-/////////////////////NSLog////////////////////////////////////////////////////////////////////////
+/**
+ 关于log
+ */
 #if TARGET_IPHONE_SIMULATOR
 #define SNLog( s, ... ) NSLog( @"[%s:%d] %s", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[[NSString alloc] initWithData:[[NSString stringWithFormat:s, ##__VA_ARGS__] dataUsingEncoding:NSUTF8StringEncoding] encoding:NSASCIIStringEncoding] UTF8String])
 #else
 #define SNLog( s, ... )
 #endif
 
-//#if TARGET_IPHONE_SIMULATOR
-//#define NSLog( s, ...) NSLog(@"--------------->\n[%s:%d] %s\n  <---------\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],__LINE__, [[NSString stringWithFormat:s, ##__VA_ARGS__] UTF8String]);
-//#else
-//#define NSLog( s, ...)
-//#endif
+#if TARGET_IPHONE_SIMULATOR
 #define NSLog( s, ...) NSLog(@"--------------->\n[%s:%d] %s\n  <---------\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],__LINE__, [[NSString stringWithFormat:s, ##__VA_ARGS__] UTF8String]);
-
-#define SNString( s, ... ) [NSString stringWithFormat:(s), ##__VA_ARGS__]
+#else
+#define NSLog( s, ...)
+#endif
 
 #define SN_ASCII_String( s, ... ) [NSString stringWithCString:[[NSString stringWithFormat:(s), ##__VA_ARGS__] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]
 
 #define CODE_LOCATION_LABLE [NSString stringWithFormat:@"%s%d",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],__LINE__]
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ string about
+ */
+#define SNString( s, ... ) [NSString stringWithFormat:(s), ##__VA_ARGS__]
+
 
 #endif /* SNTololMacro_h */
