@@ -2,7 +2,7 @@
 //  SNTool.h
 //  AiteCube
 //
-//  Created by sunDong on 2017/9/25.
+//  Created by snlo on 2017/9/25.
 //  Copyright © 2017年 AiteCube. All rights reserved.
 //
 
@@ -81,7 +81,7 @@ __attribute__((objc_subclassing_restricted))
 + (UIColor *)colorWithHexString:(NSString *)color;
 
 /**
- 正则表达式检索手机号
+ 正则表达式检索手机号:(^1([3-9])\\d{9}$)
  */
 + (BOOL)isPhone:(NSString *)phone;
 
@@ -91,7 +91,7 @@ __attribute__((objc_subclassing_restricted))
 + (BOOL)isIDCardNumber:(NSString *)value;
 
 /**
- 正则密码是否6位以上包含数字和字母
+ 正则密码是否6-12位包含数字和字母
  */
 + (BOOL)isPassWord:(NSString *)pass;
 
@@ -101,7 +101,7 @@ __attribute__((objc_subclassing_restricted))
 + (BOOL)isPaymentNumber:(NSString *)number;
 
 /**
- 正则匹配image的url
+ 正则匹配image的url，若不是则加上SNNetworking中的url
  */
 + (NSString *)isImageUrl:(NSString *)string;
 
@@ -117,7 +117,6 @@ __attribute__((objc_subclassing_restricted))
 /**
  任意对象的上一个响应者ViewContrllor实咧
  */
-+ (UIViewController *)getNextViewController;
 + (UIViewController *)topViewController;
 /**
  拨打电话
@@ -162,7 +161,16 @@ __attribute__((objc_subclassing_restricted))
 + (BOOL)stringContainsEmoji:(NSString *)string;
 
 /**
- 获取但前时间，
+ 根据正则，过滤特殊字符
+ 
+ @param string 要过滤的字符串
+ @param regexStr 正则
+ @return 过滤后的字符串
+ */
++ (NSString *)filterCharacters:(NSString *)string withRegex:(NSString *)regexStr;
+
+/**
+ 获取当前时间，
 
  @param format 默认格式：@"yyyy-MM-dd HH:mm:ss" 当为nil，时间的格式为默认
  @param date 自定义时间
@@ -186,19 +194,11 @@ __attribute__((objc_subclassing_restricted))
  */
 + (NSString *)getCurrentWeekFromDate:(NSDate *)date;
 
-/**
- 根据正则，过滤特殊字符
-
- @param string 要过滤的字符串
- @param regexStr 正则
- @return 过滤后的字符串
- */
-+ (NSString *)filterCharacters:(NSString *)string withRegex:(NSString *)regexStr;
 
 /**
  获取本地版本号
  */
-+ (NSString *)getAppVersionNo;
++ (NSString *)fetchAppVersionNo;
 
 /**
  是否全为空格

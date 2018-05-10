@@ -32,8 +32,6 @@
     } else if ([language hasPrefix:@"zh"]) {
         if ([language rangeOfString:@"Hans"].location != NSNotFound) {
             language = @"zh-Hans";
-        } else {
-            language = @"zh-Hant";
         }
     } else {
         language = @"en";

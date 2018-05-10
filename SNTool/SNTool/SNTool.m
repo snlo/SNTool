@@ -2,7 +2,7 @@
 //  SNTool.m
 //  AiteCube
 //
-//  Created by sunDong on 2017/9/25.
+//  Created by snlo on 2017/9/25.
 //  Copyright © 2017年 AiteCube. All rights reserved.
 //
 
@@ -72,7 +72,6 @@ static id instanse;
     BOOL isSettingColor = NO;
     unsigned int count;
     Ivar *ivars =  class_copyIvarList([UIAlertAction class], &count);
-    NSLog(@"________________________________________________");
     for (int i = 0; i < count; i++) {
         Ivar ivar = ivars[i];
         const char * cName =  ivar_getName(ivar);
@@ -83,7 +82,6 @@ static id instanse;
         }
 //        NSLog(@"%@",ocName);
     }
-    NSLog(@"________________________________________________");
 //    free(ivars);
 
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
@@ -107,7 +105,7 @@ static id instanse;
         [alertController addAction:action];
     }
     
-    [[self getNextViewController] presentViewController:alertController animated:YES completion:nil];
+    [[self topViewController] presentViewController:alertController animated:YES completion:nil];
     
     alertController.view.tintColor = COLOR_BLACK;
     
@@ -372,14 +370,9 @@ static id instanse;
     }
 }
 + (BOOL)isPassWord:(NSString *)pass {
-    BOOL result = false;
-    if ([pass length] >= 6){
-        // 判断长度大于8位后再接着判断是否同时包含数字和字符
-        NSString * regex = @"^(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,12}$";
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-        result = [pred evaluateWithObject:pass];
-    }
-    return result;
+	NSString * regex = @"^(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,12}$";
+	NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+	return [pred evaluateWithObject:pass];
 }
 + (BOOL)isPaymentNumber:(NSString *)number {
     BOOL result = false;
@@ -417,54 +410,6 @@ static id instanse;
 
 + (BOOL)isiOS11{
     return [UIDevice currentDevice].systemVersion.floatValue >= 11.0;
-}
-
-+ (UIViewController *)getNextViewController
-{
-    UIViewController *result = nil;
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    
-    if (window.windowLevel != UIWindowLevelNormal) {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        
-        for(UIWindow * tmpWin in windows) {
-            
-            if (tmpWin.windowLevel == UIWindowLevelNormal) {
-                window = tmpWin;
-                break;
-            }
-        }
-    }
-    
-    UIView * frontView = [[UIView alloc]init];
-    
-    if (window.subviews.count < 1) {
-        frontView = window.rootViewController.view;
-    } else {
-        frontView = [[window subviews] objectAtIndex:0];
-    }
-    
-    id nextResponder = [frontView nextResponder];
-    
-    if ([nextResponder isKindOfClass:[UIViewController class]]) {
-        result = nextResponder;
-    } else {
-        result = window.rootViewController;
-    }
-    
-    if (result.presentedViewController) {
-        result = result.presentedViewController;
-        
-        for (int i = 0; i < 20; ++i) {
-            if (result.presentedViewController) {
-                result = result.presentedViewController;
-            } else {
-                break;
-            }
-        }
-    }
-    NSLog(@"getNextViewController -- %@",NSStringFromClass([result class]));
-    return result;
 }
 
 + (UIViewController *)topViewController {
@@ -644,7 +589,7 @@ static id instanse;
 //                  conponent.second);
     return SNString(@"%@",weekdays[conponent.weekday]);
 }
-+ (NSString *)getAppVersionNo {
++ (NSString *)fetchAppVersionNo {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
@@ -727,7 +672,7 @@ static id instanse;
 
 - (MBProgressHUD *)hud {
 	if (!_hud) {
-		_hud = [MBProgressHUD showHUDAddedTo:[SNTool getNextViewController].view animated:YES];
+		_hud = [MBProgressHUD showHUDAddedTo:[SNTool topViewController].view animated:YES];
 		_hud.mode = MBProgressHUDModeText;
         _hud.contentColor = [UIColor whiteColor];
 		_hud.bezelView.color = [UIColor colorWithWhite:0.00 alpha:0.7];
@@ -738,7 +683,7 @@ static id instanse;
 }
 - (MBProgressHUD *)hudSuccess {
 	if (!_hudSuccess) {
-		_hudSuccess = [MBProgressHUD showHUDAddedTo:[SNTool getNextViewController].view animated:YES];
+		_hudSuccess = [MBProgressHUD showHUDAddedTo:[SNTool topViewController].view animated:YES];
 		_hudSuccess.mode = MBProgressHUDModeCustomView;
 		
 		UIImage *image = [[UIImage imageNamed:@"public_checkbox_circle_checked_white"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -754,10 +699,10 @@ static id instanse;
 }
 - (MBProgressHUD *)hudLoding {
     if (!_hudLoding) {
-        if (![SNTool getNextViewController]) {
+        if (![SNTool topViewController]) {
             return _hudLoding;
         }
-        _hudLoding = [MBProgressHUD showHUDAddedTo:[SNTool getNextViewController].view animated:YES];
+        _hudLoding = [MBProgressHUD showHUDAddedTo:[SNTool topViewController].view animated:YES];
         _hudLoding.mode = MBProgressHUDModeIndeterminate;
         _hudLoding.bezelView.color = [UIColor colorWithWhite:0.00 alpha:0.7];
         _hudLoding.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
@@ -767,6 +712,55 @@ static id instanse;
     } return _hudLoding;
 }
 
+
+#pragma mark -- Repealed
+//+ (UIViewController *)topViewController
+//{
+//	UIViewController *result = nil;
+//	UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+//
+//	if (window.windowLevel != UIWindowLevelNormal) {
+//		NSArray *windows = [[UIApplication sharedApplication] windows];
+//
+//		for(UIWindow * tmpWin in windows) {
+//
+//			if (tmpWin.windowLevel == UIWindowLevelNormal) {
+//				window = tmpWin;
+//				break;
+//			}
+//		}
+//	}
+//
+//	UIView * frontView = [[UIView alloc]init];
+//
+//	if (window.subviews.count < 1) {
+//		frontView = window.rootViewController.view;
+//	} else {
+//		frontView = [[window subviews] objectAtIndex:0];
+//	}
+//
+//	id nextResponder = [frontView nextResponder];
+//
+//	if ([nextResponder isKindOfClass:[UIViewController class]]) {
+//		result = nextResponder;
+//	} else {
+//		result = window.rootViewController;
+//	}
+//
+//	if (result.presentedViewController) {
+//		result = result.presentedViewController;
+//
+//		for (int i = 0; i < 20; ++i) {
+//			if (result.presentedViewController) {
+//				result = result.presentedViewController;
+//			} else {
+//				break;
+//			}
+//		}
+//	}
+//	NSLog(@"topViewController -- %@",NSStringFromClass([result class]));
+//	return result;
+//}
 
 
 @end
