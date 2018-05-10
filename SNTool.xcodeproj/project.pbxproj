@@ -10,6 +10,8 @@
 		37922E8994AD820FB1C27A47 /* libPods-SNToolTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55830EA6C024BD5BB40366E5 /* libPods-SNToolTests.a */; };
 		576392C362E9813830BC4FEA /* libPods-SNToolUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7B336037C8959E1BCCB8C3 /* libPods-SNToolUITests.a */; };
 		5EB0047820A11C70003E8AF8 /* SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB0047620A11C70003E8AF8 /* SNTool.m */; };
+		988736A720A44CF300BF6A9C /* NSString+SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 988736A620A44CF300BF6A9C /* NSString+SNTool.m */; };
+		988736A920A4503D00BF6A9C /* SNTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 988736A820A4503D00BF6A9C /* SNTool.bundle */; };
 		B2154FBBFD7CEBEA33BAB27B /* libPods-SNTool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E600F2AF6617AAA788107DE /* libPods-SNTool.a */; };
 		B3A2E4581E5EBA83005459E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E4571E5EBA83005459E9 /* main.m */; };
 		B3A2E45B1E5EBA83005459E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2E45A1E5EBA83005459E9 /* AppDelegate.m */; };
@@ -48,6 +50,11 @@
 		68B6482510D1643BBEC3FC6C /* Pods-SNToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNToolTests/Pods-SNToolTests.release.xcconfig"; sourceTree = "<group>"; };
 		9832B56D20A13ADE00BDC97C /* SNTololMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTololMacro.h; sourceTree = "<group>"; };
 		9832B56E20A13B5E00BDC97C /* Singletion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singletion.h; sourceTree = "<group>"; };
+		988736A520A44CF300BF6A9C /* NSString+SNTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SNTool.h"; sourceTree = "<group>"; };
+		988736A620A44CF300BF6A9C /* NSString+SNTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SNTool.m"; sourceTree = "<group>"; };
+		988736A820A4503D00BF6A9C /* SNTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SNTool.bundle; sourceTree = "<group>"; };
+		988736AF20A450A700BF6A9C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		988736B020A450A700BF6A9C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		B3A2E4531E5EBA83005459E9 /* SNTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A2E4571E5EBA83005459E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B3A2E4591E5EBA83005459E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -193,6 +200,9 @@
 				5EB0047620A11C70003E8AF8 /* SNTool.m */,
 				9832B56D20A13ADE00BDC97C /* SNTololMacro.h */,
 				9832B56E20A13B5E00BDC97C /* Singletion.h */,
+				988736A520A44CF300BF6A9C /* NSString+SNTool.h */,
+				988736A620A44CF300BF6A9C /* NSString+SNTool.m */,
+				988736A820A4503D00BF6A9C /* SNTool.bundle */,
 			);
 			path = SNTool;
 			sourceTree = "<group>";
@@ -288,6 +298,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = B3A2E44A1E5EBA83005459E9;
 			productRefGroup = B3A2E4541E5EBA83005459E9 /* Products */;
@@ -306,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				988736A920A4503D00BF6A9C /* SNTool.bundle in Resources */,
 				B3A2E4661E5EBA83005459E9 /* LaunchScreen.storyboard in Resources */,
 				B3A2E4631E5EBA83005459E9 /* Assets.xcassets in Resources */,
 				B3A2E4611E5EBA83005459E9 /* Main.storyboard in Resources */,
@@ -391,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3A2E45E1E5EBA83005459E9 /* ViewController.m in Sources */,
+				988736A720A44CF300BF6A9C /* NSString+SNTool.m in Sources */,
 				B3A2E45B1E5EBA83005459E9 /* AppDelegate.m in Sources */,
 				5EB0047820A11C70003E8AF8 /* SNTool.m in Sources */,
 				B3A2E4581E5EBA83005459E9 /* main.m in Sources */,
@@ -433,6 +446,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3A2E4601E5EBA83005459E9 /* Base */,
+				988736AF20A450A700BF6A9C /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -441,6 +455,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3A2E4651E5EBA83005459E9 /* Base */,
+				988736B020A450A700BF6A9C /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -452,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -508,6 +524,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

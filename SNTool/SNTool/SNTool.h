@@ -12,6 +12,8 @@
 #import "SNTololMacro.h"
 #import "Singletion.h"
 
+#import "NSString+SNTool.h"
+
 __attribute__((objc_subclassing_restricted))
 
 @interface SNTool : NSObject
