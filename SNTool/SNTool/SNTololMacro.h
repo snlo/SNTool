@@ -31,11 +31,11 @@
 /**
  color about
  */
-#define COLOR_MAIN [SNTool colorWithHexString:@"#222222"] //雅黑
-#define COLOR_BACK [SNTool colorWithHexString:@"#F6F6F6"] //背景色
-#define COLOR_SEPARATOR [SNTool colorWithHexString:@"#E9EDEE"] //分割线颜色
+#define COLOR_MAIN [SNTool colorWithHexString:@"#222222"] //主题色，雅黑
 #define COLOR_TITLE [SNTool colorWithHexString:@"#666666"] //标题色
 #define COLOR_CONTENT [SNTool colorWithHexString:@"#999999"] //内容色
+#define COLOR_BACK [SNTool colorWithHexString:@"#F6F6F6"] //背景色，淡灰色
+#define COLOR_SEPARATOR [SNTool colorWithHexString:@"#E9EDEE"] //分割线颜色
 
 /**
  设置取消动态部署 scrollview及其子类

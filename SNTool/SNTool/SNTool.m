@@ -22,27 +22,7 @@
 
 @end
 
-@implementation SNTool
-
-static id instanse;
-
-+ (instancetype)allocWithZone:(struct _NSZone *)zone {
-	static dispatch_once_t onesToken;
-	dispatch_once(&onesToken, ^{
-		instanse = [super allocWithZone:zone];
-	});
-	return instanse;
-}
-+ (instancetype)sharedManager {
-	static dispatch_once_t onestoken;
-	dispatch_once(&onestoken, ^{
-		instanse = [[self alloc] init];
-	});
-	return instanse;
-}
-- (id)copyWithZone:(NSZone *)zone {
-	return instanse;
-};
+singletonImplemention(SNTool)
 
 #pragma mark -- API
 

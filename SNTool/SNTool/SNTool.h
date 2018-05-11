@@ -16,9 +16,7 @@
 
 __attribute__((objc_subclassing_restricted))
 
-@interface SNTool : NSObject
-
-+ (instancetype)sharedManager;
+singletonInterface(SNTool)
 
 /**
  获取根视图控制器，最后一个window的rootViewController
