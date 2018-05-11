@@ -1,9 +1,9 @@
 //
 //  SNTool.m
-//  AiteCube
+//  snlo
 //
 //  Created by snlo on 2017/9/25.
-//  Copyright © 2017年 AiteCube. All rights reserved.
+//  Copyright © 2017年 snlo. All rights reserved.
 //
 
 #import "SNTool.h"
@@ -98,7 +98,7 @@ static id instanse;
                 if (styleAction == UIAlertActionStyleCancel) {
                     [action setValue:COLOR_CONTENT forKey:@"titleTextColor"];
                 } else {
-                    [action setValue:COLOR_BLACK forKey:@"titleTextColor"];
+                    [action setValue:COLOR_MAIN forKey:@"titleTextColor"];
                 }
             }
         }
@@ -107,7 +107,7 @@ static id instanse;
     
     [[self topViewController] presentViewController:alertController animated:YES completion:nil];
     
-    alertController.view.tintColor = COLOR_BLACK;
+    alertController.view.tintColor = COLOR_MAIN;
     
     //2秒钟之后自动dismiss掉
     if (!cancelString) {
@@ -413,16 +413,27 @@ static id instanse;
 }
 
 + (UIViewController *)topViewController {
-    UIViewController * resultVC = [self fetchTopViewControllerWith:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    __block UIWindow * window = [UIApplication sharedApplication].keyWindow;
+    if (!window) {
+        [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            window = obj;
+        }];
+    }
+    NSLog(@"%@",window.rootViewController);
+    
+    UIViewController * resultVC = [self fetchTopViewControllerWith:[window rootViewController]];
+    if (!resultVC) {
+        
+    }
     while (resultVC.presentedViewController) {
         resultVC = [self fetchTopViewControllerWith:resultVC.presentedViewController];
     }
     while (resultVC.childViewControllers.count > 0) {
-        resultVC = [self fetchTopViewControllerWithChids:resultVC.childViewControllers.lastObject];
+        resultVC = [self fetchTopViewControllerWithChilds:resultVC.childViewControllers.lastObject];
     }
     return resultVC;
 }
-+ (UIViewController *)fetchTopViewControllerWithChids:(UIViewController *)VC  {
++ (UIViewController *)fetchTopViewControllerWithChilds:(UIViewController *)VC  {
     if (VC.childViewControllers.lastObject) {
         return VC.childViewControllers.lastObject;
     } else {
@@ -544,7 +555,7 @@ static id instanse;
     }
 }
 
-+ (NSString *)getCurrentTimeFormat:(NSString *)format fromDate:(NSDate *)date
++ (NSString *)fetchCurrentTimeFormat:(NSString *)format fromDate:(NSDate *)date
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     
@@ -558,7 +569,7 @@ static id instanse;
     }
     return [formatter stringFromDate:date];
 }
-+ (NSString *)getTimeFromCurrentSecs:(NSTimeInterval)secs format:(NSString *)format
++ (NSString *)fetchTimeFromCurrentSecs:(NSTimeInterval)secs format:(NSString *)format
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     if (format) {
@@ -570,7 +581,7 @@ static id instanse;
     
     return [formatter stringFromDate:nextDate];
 }
-+ (NSString *)getCurrentWeekFromDate:(NSDate *)date {
++ (NSString *)fetchCurrentWeekFromDate:(NSDate *)date {
     NSCalendar  * calendar = [NSCalendar  currentCalendar];
     NSUInteger  unitFlags = NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute |NSCalendarUnitSecond;
     if (!date) {

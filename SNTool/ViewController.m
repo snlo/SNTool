@@ -16,12 +16,26 @@
 
 @implementation ViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [SNTool showAlertStyle:UIAlertControllerStyleAlert title:@"提示" msg:SNString_localized(@"测试") chooseBlock:^(NSInteger actionIndx) {
+        
+    } actionsStatement:@"确认", nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-	
+//    SNPhotoCameraViewControllor
     NSLog(@"-- -- -- - - -- %@",SNString_localized(@"测试"));
-	NSLog(@"%@",[SNTool getNextViewController]);
+    NSLog(@"%@",[SNTool topViewController]);
+    
 }
 
 

@@ -31,7 +31,7 @@
 /**
  color about
  */
-#define COLOR_BLACK [SNTool colorWithHexString:@"#222222"] //雅黑
+#define COLOR_MAIN [SNTool colorWithHexString:@"#222222"] //雅黑
 #define COLOR_BACK [SNTool colorWithHexString:@"#F6F6F6"] //背景色
 #define COLOR_SEPARATOR [SNTool colorWithHexString:@"#E9EDEE"] //分割线颜色
 #define COLOR_TITLE [SNTool colorWithHexString:@"#666666"] //标题色
