@@ -14,6 +14,10 @@
 
 #import "NSString+SNTool.h"
 
+#import "SNConcreteProtocol.h"
+#import "SNSafeCategory.h"
+#import "SNRuntimeExtensions.h"
+
 __attribute__((objc_subclassing_restricted))
 
 singletonInterface(SNTool)

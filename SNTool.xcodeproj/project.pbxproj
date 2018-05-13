@@ -10,6 +10,9 @@
 		37922E8994AD820FB1C27A47 /* libPods-SNToolTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55830EA6C024BD5BB40366E5 /* libPods-SNToolTests.a */; };
 		576392C362E9813830BC4FEA /* libPods-SNToolUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7B336037C8959E1BCCB8C3 /* libPods-SNToolUITests.a */; };
 		5EB0047820A11C70003E8AF8 /* SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB0047620A11C70003E8AF8 /* SNTool.m */; };
+		5ED6AB4520A7EC6A00128667 /* SNSafeCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED6AB4220A7EC6900128667 /* SNSafeCategory.m */; };
+		5ED6AB4620A7EC6A00128667 /* SNConcreteProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED6AB4320A7EC6900128667 /* SNConcreteProtocol.m */; };
+		5ED6AB4920A7EC8700128667 /* SNRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED6AB4820A7EC8700128667 /* SNRuntimeExtensions.m */; };
 		988736A720A44CF300BF6A9C /* NSString+SNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 988736A620A44CF300BF6A9C /* NSString+SNTool.m */; };
 		988736A920A4503D00BF6A9C /* SNTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 988736A820A4503D00BF6A9C /* SNTool.bundle */; };
 		B2154FBBFD7CEBEA33BAB27B /* libPods-SNTool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E600F2AF6617AAA788107DE /* libPods-SNTool.a */; };
@@ -47,6 +50,12 @@
 		5E600F2AF6617AAA788107DE /* libPods-SNTool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNTool.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB0047620A11C70003E8AF8 /* SNTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTool.m; sourceTree = "<group>"; };
 		5EB0047720A11C70003E8AF8 /* SNTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTool.h; sourceTree = "<group>"; };
+		5ED6AB4120A7EC6900128667 /* SNConcreteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNConcreteProtocol.h; sourceTree = "<group>"; };
+		5ED6AB4220A7EC6900128667 /* SNSafeCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNSafeCategory.m; sourceTree = "<group>"; };
+		5ED6AB4320A7EC6900128667 /* SNConcreteProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNConcreteProtocol.m; sourceTree = "<group>"; };
+		5ED6AB4420A7EC6900128667 /* SNSafeCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSafeCategory.h; sourceTree = "<group>"; };
+		5ED6AB4720A7EC8700128667 /* SNRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRuntimeExtensions.h; sourceTree = "<group>"; };
+		5ED6AB4820A7EC8700128667 /* SNRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRuntimeExtensions.m; sourceTree = "<group>"; };
 		68B6482510D1643BBEC3FC6C /* Pods-SNToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNToolTests/Pods-SNToolTests.release.xcconfig"; sourceTree = "<group>"; };
 		9832B56D20A13ADE00BDC97C /* SNTololMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTololMacro.h; sourceTree = "<group>"; };
 		9832B56E20A13B5E00BDC97C /* Singletion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singletion.h; sourceTree = "<group>"; };
@@ -202,6 +211,12 @@
 				9832B56E20A13B5E00BDC97C /* Singletion.h */,
 				988736A520A44CF300BF6A9C /* NSString+SNTool.h */,
 				988736A620A44CF300BF6A9C /* NSString+SNTool.m */,
+				5ED6AB4120A7EC6900128667 /* SNConcreteProtocol.h */,
+				5ED6AB4320A7EC6900128667 /* SNConcreteProtocol.m */,
+				5ED6AB4420A7EC6900128667 /* SNSafeCategory.h */,
+				5ED6AB4220A7EC6900128667 /* SNSafeCategory.m */,
+				5ED6AB4720A7EC8700128667 /* SNRuntimeExtensions.h */,
+				5ED6AB4820A7EC8700128667 /* SNRuntimeExtensions.m */,
 				988736A820A4503D00BF6A9C /* SNTool.bundle */,
 			);
 			path = SNTool;
@@ -402,10 +417,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ED6AB4620A7EC6A00128667 /* SNConcreteProtocol.m in Sources */,
+				5ED6AB4520A7EC6A00128667 /* SNSafeCategory.m in Sources */,
 				B3A2E45E1E5EBA83005459E9 /* ViewController.m in Sources */,
 				988736A720A44CF300BF6A9C /* NSString+SNTool.m in Sources */,
 				B3A2E45B1E5EBA83005459E9 /* AppDelegate.m in Sources */,
 				5EB0047820A11C70003E8AF8 /* SNTool.m in Sources */,
+				5ED6AB4920A7EC8700128667 /* SNRuntimeExtensions.m in Sources */,
 				B3A2E4581E5EBA83005459E9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
