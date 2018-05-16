@@ -57,7 +57,7 @@
 		5ED6AB4720A7EC8700128667 /* SNRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRuntimeExtensions.h; sourceTree = "<group>"; };
 		5ED6AB4820A7EC8700128667 /* SNRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRuntimeExtensions.m; sourceTree = "<group>"; };
 		68B6482510D1643BBEC3FC6C /* Pods-SNToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNToolTests/Pods-SNToolTests.release.xcconfig"; sourceTree = "<group>"; };
-		9832B56D20A13ADE00BDC97C /* SNTololMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTololMacro.h; sourceTree = "<group>"; };
+		9832B56D20A13ADE00BDC97C /* SNToolMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNToolMacro.h; sourceTree = "<group>"; };
 		9832B56E20A13B5E00BDC97C /* Singletion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singletion.h; sourceTree = "<group>"; };
 		988736A520A44CF300BF6A9C /* NSString+SNTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SNTool.h"; sourceTree = "<group>"; };
 		988736A620A44CF300BF6A9C /* NSString+SNTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SNTool.m"; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 			children = (
 				5EB0047720A11C70003E8AF8 /* SNTool.h */,
 				5EB0047620A11C70003E8AF8 /* SNTool.m */,
-				9832B56D20A13ADE00BDC97C /* SNTololMacro.h */,
+				9832B56D20A13ADE00BDC97C /* SNToolMacro.h */,
 				9832B56E20A13B5E00BDC97C /* Singletion.h */,
 				988736A520A44CF300BF6A9C /* NSString+SNTool.h */,
 				988736A620A44CF300BF6A9C /* NSString+SNTool.m */,

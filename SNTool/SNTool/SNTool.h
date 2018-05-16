@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "SNTololMacro.h"
+#import "SNToolMacro.h"
 #import "Singletion.h"
 
 #import "NSString+SNTool.h"
@@ -83,9 +83,9 @@ singletonInterface(SNTool)
  颜色转换
  
  @param color iOS中十六进制的颜色（以#开头）
- @return UIColor
+ @param alpha 透明度
  */
-+ (UIColor *)colorWithHexString:(NSString *)color;
++ (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
 
 /**
  正则表达式检索手机号:(^1([3-9])\\d{9}$)

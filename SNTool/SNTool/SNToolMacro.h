@@ -1,13 +1,13 @@
 //
-//  SNTololMacro.h
+//  SNToolMacro.h
 //  SNTool
 //
 //  Created by snlo on 2018/5/8.
 //  Copyright © 2018年 snlo. All rights reserved.
 //
 
-#ifndef SNTololMacro_h
-#define SNTololMacro_h
+#ifndef SNToolMacro_h
+#define SNToolMacro_h
 
 /**
  屏幕宽高
@@ -31,11 +31,14 @@
 /**
  color about
  */
-#define COLOR_MAIN [SNTool colorWithHexString:@"#222222"] //主题色，雅黑
-#define COLOR_TITLE [SNTool colorWithHexString:@"#666666"] //标题色
-#define COLOR_CONTENT [SNTool colorWithHexString:@"#999999"] //内容色
-#define COLOR_BACK [SNTool colorWithHexString:@"#F6F6F6"] //背景色，淡灰色
-#define COLOR_SEPARATOR [SNTool colorWithHexString:@"#E9EDEE"] //分割线颜色
+#define COLOR_MAIN [SNTool colorWithHexString:@"#222222" alpha:1.0f] //主题色，雅黑
+#define COLOR_TITLE [SNTool colorWithHexString:@"#666666" alpha:1.0f] //标题色
+#define COLOR_CONTENT [SNTool colorWithHexString:@"#999999" alpha:1.0f] //内容色
+#define COLOR_BACK [SNTool colorWithHexString:@"#F6F6F6" alpha:1.0f] //背景色，淡灰色
+#define COLOR_SEPARATOR [SNTool colorWithHexString:@"#E9EDEE" alpha:1.0f] //分割线颜色
+
+#define COLOR_RGB(rgbValue,a) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]  //6位十六进制颜色转换，带透明度
 
 /**
  设置取消动态部署 scrollview及其子类
