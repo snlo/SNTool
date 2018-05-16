@@ -8,6 +8,7 @@
 //
 
 #import <objc/runtime.h>
+#import "SNmetamacros.h"
 
 /**
  * \@safecategory defines the implementation of a safe category named \a CATEGORY on \a CLASS.

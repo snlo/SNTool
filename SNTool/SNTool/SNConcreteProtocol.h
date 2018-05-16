@@ -9,7 +9,7 @@
 
 #import <objc/runtime.h>
 #import <stdio.h>
-//#import "metamacros.h"
+#import "SNmetamacros.h"
 
 /**
  * Used to list methods with concrete implementations within a \@protocol
