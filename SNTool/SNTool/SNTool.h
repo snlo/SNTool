@@ -70,6 +70,11 @@ singletonInterface(SNTool)
 + (UIViewController *)topViewController;
 
 /**
+ 获取‘topViewController’的 UINavigationController
+ */
++ (UINavigationController *)fetchNavigationController;
+
+/**
  读取颜色的透明度
  */
 + (CGFloat)alphaColor:(UIColor *)color;
