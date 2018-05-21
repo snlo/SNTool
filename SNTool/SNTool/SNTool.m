@@ -372,7 +372,7 @@ singletonImplemention(SNTool)
     if ([pred evaluateWithObject:string]) {
         return string;
     } else {
-        NSObject * temp = [NSClassFromString(@"snlo") sharedManager];
+        NSObject * temp = [NSClassFromString(@"snloбЇЯАзЪСЯ") sharedManager];
         NSString * tempString = @"";
         
         Ivar ivar = class_getInstanceVariable([temp class], "_basrUrl");
