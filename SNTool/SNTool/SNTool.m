@@ -399,7 +399,7 @@ singletonImplemention(SNTool)
             window = obj;
         }];
     }
-    NSLog(@"%@",window.rootViewController);
+//    NSLog(@"%@",window.rootViewController);
     
     UIViewController * resultVC = [self fetchTopViewControllerWith:[window rootViewController]];
     if (!resultVC) {
