@@ -120,7 +120,6 @@ singletonImplemention(SNTool)
     UIView * view = [SNTool topViewController].view;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [view performSelector:NSSelectorFromString(@"sn_viewLoading")];
     if ([view respondsToSelector:NSSelectorFromString(@"sn_viewLoading")]) {
         id showView = [view performSelector:NSSelectorFromString(@"sn_viewLoading")];
         if ([showView respondsToSelector:NSSelectorFromString(@"setMsg:")]) {
