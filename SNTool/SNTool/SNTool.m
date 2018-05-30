@@ -117,14 +117,36 @@ singletonImplemention(SNTool)
 }
 
 + (void)showLoading:(NSString *)msg {
-    [SNTool sharedManager].hudLoding.label.text = msg;
+    UIView * view = [SNTool topViewController].view;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [view performSelector:NSSelectorFromString(@"sn_viewLoading")];
+    if ([view respondsToSelector:NSSelectorFromString(@"sn_viewLoading")]) {
+        id showView = [view performSelector:NSSelectorFromString(@"sn_viewLoading")];
+        if ([showView respondsToSelector:NSSelectorFromString(@"setMsg:")]) {
+            [showView performSelector:NSSelectorFromString(@"setMsg:") withObject:msg];
+        }
+        [showView performSelector:NSSelectorFromString(@"showin:withViewController:") withObject:nil withObject:[SNTool fetchNavigationController]];
+#pragma clang diagnostic pop
+    } else {
+        [SNTool sharedManager].hudLoding.label.text = msg;
+    }
 }
-+ (void)dismisLoding {
-    [[SNTool sharedManager].hudLoding hideAnimated:YES];
-    [SNTool sharedManager].hudLoding.completionBlock = ^ () {
-        [[SNTool sharedManager].hudLoding removeFromSuperview];
-        [SNTool sharedManager].hudLoding = nil;
-    };
++ (void)dismissLoading {
+    UIView * view = [SNTool topViewController].view;
+    if ([view respondsToSelector:NSSelectorFromString(@"sn_viewLoading")]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        id showView = [view performSelector:NSSelectorFromString(@"sn_viewLoading")];
+        [showView performSelector:NSSelectorFromString(@"dismissFromSuperView:") withObject:nil];
+#pragma clang diagnostic pop
+    } else {
+        [[SNTool sharedManager].hudLoding hideAnimated:YES];
+        [SNTool sharedManager].hudLoding.completionBlock = ^ () {
+            [[SNTool sharedManager].hudLoding removeFromSuperview];
+            [SNTool sharedManager].hudLoding = nil;
+        };
+    }
 }
 
 + (BOOL)isPresented:(UIViewController *)viewController {
@@ -665,6 +687,7 @@ singletonImplemention(SNTool)
 	if (!_hud) {
 		_hud = [MBProgressHUD showHUDAddedTo:[SNTool topViewController].view animated:YES];
 		_hud.mode = MBProgressHUDModeText;
+        
         _hud.contentColor = [UIColor whiteColor];
 		_hud.bezelView.color = [UIColor colorWithWhite:0.00 alpha:0.7];
 		_hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
@@ -697,6 +720,7 @@ singletonImplemention(SNTool)
         _hudLoding.mode = MBProgressHUDModeIndeterminate;
         _hudLoding.bezelView.color = [UIColor colorWithWhite:0.00 alpha:0.7];
         _hudLoding.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        _hudLoding.label.font = [UIFont systemFontOfSize:12];
         _hudLoding.animationType = MBProgressHUDAnimationZoomIn;
         _hudLoding.contentColor = [UIColor whiteColor];
         _hudLoding.minShowTime = 0.1;
