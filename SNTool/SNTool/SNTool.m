@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) MBProgressHUD * hudLoding;
 
+@property (nonatomic, strong) UIView * showView;
+
 @end
 
 singletonImplemention(SNTool)
@@ -117,11 +119,10 @@ singletonImplemention(SNTool)
 }
 
 + (void)showLoading:(NSString *)msg {
-    UIView * view = [SNTool topViewController].view;
+    if ([[SNTool sharedManager].showView respondsToSelector:NSSelectorFromString(@"setSn_viewLoading:")]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    if ([view respondsToSelector:NSSelectorFromString(@"sn_viewLoading")]) {
-        id showView = [view performSelector:NSSelectorFromString(@"sn_viewLoading")];
+        id showView = [[SNTool sharedManager].showView performSelector:NSSelectorFromString(@"sn_viewLoading")];
         if ([showView respondsToSelector:NSSelectorFromString(@"setMsg:")]) {
             [showView performSelector:NSSelectorFromString(@"setMsg:") withObject:msg];
         }
@@ -132,11 +133,10 @@ singletonImplemention(SNTool)
     }
 }
 + (void)dismissLoading {
-    UIView * view = [SNTool topViewController].view;
-    if ([view respondsToSelector:NSSelectorFromString(@"sn_viewLoading")]) {
+    if ([[SNTool sharedManager].showView respondsToSelector:NSSelectorFromString(@"setSn_viewLoading:")]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        id showView = [view performSelector:NSSelectorFromString(@"sn_viewLoading")];
+        id showView = [[SNTool sharedManager].showView performSelector:NSSelectorFromString(@"sn_viewLoading")];
         [showView performSelector:NSSelectorFromString(@"dismissFromSuperView:") withObject:nil];
 #pragma clang diagnostic pop
     } else {
@@ -726,6 +726,11 @@ singletonImplemention(SNTool)
     } return _hudLoding;
 }
 
+- (UIView *)showView {
+    if (!_showView) {
+        _showView = [UIView new];
+    } return _showView;
+}
 
 #pragma mark -- Repealed
 //+ (UIViewController *)topViewController
