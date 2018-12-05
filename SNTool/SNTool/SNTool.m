@@ -396,7 +396,7 @@ singletonImplemention(SNTool)
         NSObject * temp = [NSClassFromString(@"snloбЇЯАзЪСЯ") sharedManager];
         NSString * tempString = @"";
         
-        Ivar ivar = class_getInstanceVariable([temp class], "_basrUrl");
+        Ivar ivar = class_getInstanceVariable([temp class], "_baseUrl");
         if (ivar != NULL) {
             tempString = object_getIvar(temp, ivar);
         }
