@@ -18,7 +18,7 @@
 #import "SNSafeCategory.h"
 #import "SNRuntimeExtensions.h"
 
-#import <MBProgressHUD.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 __attribute__((objc_subclassing_restricted))
 

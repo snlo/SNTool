@@ -10,7 +10,7 @@
 
 #import <objc/runtime.h>
 
-#import <MBProgressHUD.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface SNTool ()
 
