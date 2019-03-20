@@ -23,7 +23,7 @@
 #define kRatio_375(x) (x * SCREEN_WIDTH) / 375.f
 
 /**
- image about
+ 图片
  */
 #define IMAGE_NAMED(name) [UIImage imageNamed:name]
 #define IMAGE_PNG(name) UIImageMakeWithFileAndSuffix(name, @"png")
@@ -31,13 +31,13 @@
 #define UIImageMakeWithFileAndSuffix(name, suffix) [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", [[NSBundle mainBundle] resourcePath], name, suffix]]
 
 /**
- color about
+ 颜色
  */
-#define COLOR_MAIN [SNTool colorWithHexString:@"#222222" alpha:1.0f] //主题色，雅黑
-#define COLOR_TITLE [SNTool colorWithHexString:@"#666666" alpha:1.0f] //标题色
-#define COLOR_CONTENT [SNTool colorWithHexString:@"#999999" alpha:1.0f] //内容色
-#define COLOR_BACK [SNTool colorWithHexString:@"#F6F6F6" alpha:1.0f] //背景色，淡灰色
-#define COLOR_SEPARATOR [SNTool colorWithHexString:@"#E9EDEE" alpha:1.0f] //分割线颜色
+#define COLOR_MAIN [SNTool colorWithHexString:@"#222222" alpha:1.0f] //主题
+#define COLOR_TITLE [SNTool colorWithHexString:@"#666666" alpha:1.0f] //标题
+#define COLOR_CONTENT [SNTool colorWithHexString:@"#999999" alpha:1.0f] //内容
+#define COLOR_BACK [SNTool colorWithHexString:@"#F6F6F6" alpha:1.0f] //背景
+#define COLOR_SEPARATOR [SNTool colorWithHexString:@"#E9EDEE" alpha:1.0f] //分割线
 
 #define COLOR_RGB(rgbValue,a) \
 [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]  //6位十六进制颜色转换，带透明度
@@ -61,7 +61,7 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 /**
- 关于log
+ log
  */
 #if TARGET_IPHONE_SIMULATOR
 #define SNLog( s, ... ) NSLog( @"[%s:%d] %s", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[[NSString alloc] initWithData:[[NSString stringWithFormat:s, ##__VA_ARGS__] dataUsingEncoding:NSUTF8StringEncoding] encoding:NSASCIIStringEncoding] UTF8String])
@@ -80,7 +80,7 @@ _Pragma("clang diagnostic pop") \
 #define CODE_LOCATION_LABLE [NSString stringWithFormat:@"%s%d",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],__LINE__]
 
 /**
- string about
+ string 
  */
 #define SNString( s, ... ) [NSString stringWithFormat:(s), ##__VA_ARGS__]
 #define SNString_localized( s ) [NSString sn_localizedStringForKey:(s) table:nil bundle:nil]
