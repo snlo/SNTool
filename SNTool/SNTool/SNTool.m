@@ -453,21 +453,14 @@ singletonImplemention(SNTool)
 
 
 + (void)callWithTelephone:(NSString *)number {
-
     NSMutableString * phoneNmuberString = [[NSMutableString alloc] initWithFormat:@"telprompt:%@",number];
     
     NSURL * url =[NSURL URLWithString:phoneNmuberString];
     
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
-        [[UIApplication sharedApplication] openURL:url options:@{}
-                                 completionHandler:^(BOOL success) {
-                                     
-                                 }];
+    if (@available(iOS 10.0, *)) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {}];
     } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [[UIApplication sharedApplication] openURL:url];
-#pragma clang diagnostic pop
     }
 }
 
