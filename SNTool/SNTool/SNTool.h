@@ -36,15 +36,36 @@ singletonInterface(SNTool)
 + (UIViewController *)rootViewController;
 
 /**
+ 判断一个视图控制器是否是模态推送出来的
+ */
++ (BOOL)isPresented:(UIViewController *)viewController;
+
+/**
+ 任意对象的上一个响应者ViewContrllor实咧，前提是它已经被加载
+ */
++ (UIViewController *)topViewController;
+
+/**
+ 获取‘topViewController’的 UINavigationController
+ */
++ (UINavigationController *)fetchNavigationController;
+
+/**
+ 获取 keyWindow，兼容iOS 13以前
+ */
++ (UIWindow *)keyWindow;
+
+/**
  统一定制alertViewController,兼容到iOS 8。
 
- @param style 见 UIAlertControllerStyle
  @param title 标题
  @param message 内容
- @param block action回调，‘0’为UIAlertActionStyleCancel的action。
+ @param style 见 UIAlertControllerStyle
+ @param block action回调，‘0’为 UIAlertActionStyleCancel 的 action。
+ @param colors actions 颜色，默认为 #222222。数组的 index与block中的一一对应
  @param cancelString action数组，与回到中的actionIndex一一对应。当为nil时，alertViewController在2s后自动销毁
  */
-+ (void)showAlertStyle:(UIAlertControllerStyle)style title:(NSString *)title msg:(NSString *)message chooseBlock:(void (^)(NSInteger actionIndx))block  actionsStatement:(NSString *)cancelString, ... NS_REQUIRES_NIL_TERMINATION;
++ (UIAlertController *)showAlertTitle:(NSString *)title message:(NSString *)message tyle:(UIAlertControllerStyle)style actionBlock:(void (^)(NSInteger index))block actionColors:(NSArray <UIColor *> *)colors actionsStatement:(NSString *)cancelString, ... NS_REQUIRES_NIL_TERMINATION;
 
 /**
  HUD 提示框，默认显示3秒
@@ -66,21 +87,6 @@ singletonInterface(SNTool)
  销毁 全局菊花
  */
 + (void)dismissLoading;
-
-/**
- 判断一个视图控制器是否是模态推送出来的
- */
-+ (BOOL)isPresented:(UIViewController *)viewController;
-
-/**
- 任意对象的上一个响应者ViewContrllor实咧，前提是它已经被加载
- */
-+ (UIViewController *)topViewController;
-
-/**
- 获取‘topViewController’的 UINavigationController
- */
-+ (UINavigationController *)fetchNavigationController;
 
 /**
  读取颜色的透明度

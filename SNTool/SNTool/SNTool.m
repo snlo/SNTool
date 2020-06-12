@@ -32,7 +32,7 @@ singletonImplemention(SNTool)
 	return [UIApplication sharedApplication].windows.lastObject.rootViewController;
 }
 
-+ (void)showAlertStyle:(UIAlertControllerStyle)style title:(NSString *)title msg:(NSString *)message chooseBlock:(void (^)(NSInteger actionIndx))block  actionsStatement:(NSString *)cancelString, ... NS_REQUIRES_NIL_TERMINATION
++ (UIAlertController *)showAlertTitle:(NSString *)title message:(NSString *)message tyle:(UIAlertControllerStyle)style actionBlock:(void (^)(NSInteger index))block actionColors:(NSArray <UIColor *> *)colors actionsStatement:(NSString *)cancelString, ... NS_REQUIRES_NIL_TERMINATION
 {
     NSMutableArray * argsArray = [[NSMutableArray alloc] initWithCapacity:2];
     
@@ -50,7 +50,6 @@ singletonImplemention(SNTool)
         va_end(argList);
     }
     
-//    遍历私有属性
     BOOL isSettingColor = NO;
     unsigned int count;
     Ivar *ivars =  class_copyIvarList([UIAlertAction class], &count);
@@ -62,9 +61,8 @@ singletonImplemention(SNTool)
             isSettingColor = YES;
             break;
         }
-//        NSLog(@"%@",ocName);
     }
-//    free(ivars);
+    free(ivars);
 
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
     for (int i = 0; i < [argsArray count]; i++) {
@@ -77,10 +75,8 @@ singletonImplemention(SNTool)
         }];
         if (argsArray.count > 1) {
             if (isSettingColor) {
-                if (styleAction == UIAlertActionStyleCancel) {
-                    [action setValue:COLOR_CONTENT forKey:@"titleTextColor"];
-                } else {
-                    [action setValue:COLOR_MAIN forKey:@"titleTextColor"];
+                if (colors.count >= i+1) {
+                    [action setValue:colors[i] forKey:@"titleTextColor"];
                 }
             }
         }
@@ -97,6 +93,7 @@ singletonImplemention(SNTool)
             [alertController dismissViewControllerAnimated:YES completion:nil];
         });
     }
+    return alertController;
 }
 
 + (void)showHUDalertMsg:(NSString *)msg completion:(void(^)(void))completion
@@ -413,8 +410,45 @@ singletonImplemention(SNTool)
     return [UIDevice currentDevice].systemVersion.floatValue >= 11.0;
 }
 
++ (UIWindow *)keyWindow {
+    static __weak UIWindow *cachedKeyWindow = nil;
+    
+    /*  (Bug ID: #23, #25, #73)   */
+    UIWindow *originalKeyWindow = nil;
+
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+    if (@available(iOS 13.0, *)) {
+        NSSet<UIScene *> *connectedScenes = [UIApplication sharedApplication].connectedScenes;
+        for (UIScene *scene in connectedScenes) {
+            if ([scene isKindOfClass:[UIWindowScene class]]) {
+                UIWindowScene *windowScene = (UIWindowScene *)scene;
+                for (UIWindow *window in windowScene.windows) {
+                    if (window.isKeyWindow) {
+                        originalKeyWindow = window;
+                        break;
+                    }
+                }
+            }
+        }
+    } else
+    #endif
+    {
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
+        originalKeyWindow = [UIApplication sharedApplication].keyWindow;
+    #endif
+    }
+
+    //If original key window is not nil and the cached keywindow is also not original keywindow then changing keywindow.
+    if (originalKeyWindow)
+    {
+        cachedKeyWindow = originalKeyWindow;
+    }
+    
+    return cachedKeyWindow;
+}
+
 + (UIViewController *)topViewController {
-    __block UIWindow * window = [UIApplication sharedApplication].keyWindow;
+    __block UIWindow * window = [SNTool keyWindow];
     if (!window) {
         [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             window = obj;

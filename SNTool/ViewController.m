@@ -32,6 +32,7 @@
 //    } actionsStatement:@"确认", nil];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SNTool dismissLoading];
+        
     });
     
 }
@@ -45,6 +46,19 @@
     
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [SNTool
+     showAlertTitle:@"数值选择"
+     message:@"0为取消"
+     tyle:UIAlertControllerStyleAlert
+     actionBlock:^(NSInteger index) {
+        NSLog(@"%ld",(long)index);
+    }
+     actionColors:@[[UIColor redColor], [UIColor yellowColor]]
+     actionsStatement:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30", nil];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
